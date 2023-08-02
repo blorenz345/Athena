@@ -11,7 +11,6 @@ function run() {
             csvData.push(data);
         })
         .on('end', function() {
-            // remove the first line: header
             csvData.shift();
 
             const connection = mysql.createConnection({
