@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 var fs = require('fs');
 var mysql = require('mysql');
 var cheerio = require('cheerio');
@@ -6,7 +7,7 @@ var app = express();
 var cors = require('cors');
 
 // Serve static files from the "public" directory
-app.use(express.static('public'));
+
 
 // Connect to the MySQL server
 var pool = mysql.createPool({
@@ -58,46 +59,56 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/client/src/login/course.html');
 });
 
-app.listen(8080);
+
 
 
 // Serve static files from the client/src/login directory
 app.use(express.static(__dirname + '/client/src/login'));
 app.use(cors());
 
-app.get("/", (req, res) => {
-    res.setHeader("Content-type","text/html");
-    res.sendFile(__dirname + "/client/src/login/login.html");
-});
+
 
 app.listen(3006, () => console.log('server started'));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 app.post('/register', function(req, res) {
-  var username = parseInt(req.body.username); // Parse the username as an integer
-  if (isNaN(username)) {
-    res.status(400).send('Student ID must be a number.');
-    return;
-  }
+  var sid = parseInt(req.body.sid);
   var password = req.body.password;
-  var stuname = req.body.stuname;
-  var age = req.body.age;
+  var stu_name = req.body.stu_name;
+  var age = parseInt(req.body.age);
   var gender = req.body.gender;
   var major = req.body.major;
 
-  console.log('Received registration details:', req.body);
+  if (isNaN(sid)) {
+    res.status(400).send('Student ID must be a number.');
+    return;
+  }
 
-  var query = 'INSERT INTO students (sid, password, stu_name, age, gender, major) VALUES (?, ?, ?, ?, ?, ?)';
-  pool.query(query, [username, password, stuname, age, gender, major], function(error, results, fields) {
-    if (error) {
-      console.error('An error occurred:', error);
-      res.status(500).send('An error occurred during registration.');
+  bcrypt.hash(password, 10, function(err, hash) {
+    if (err) {
+      console.error(err);
       return;
     }
-    console.log('Query executed successfully, results:', results);
-    res.send('Registration successful.');  });
+
+    // Use 'hash' as the password value in the INSERT query
+    var query = 'INSERT INTO students (sid, password, stu_name, age, gender, major) VALUES (?, ?, ?, ?, ?, ?)';
+    pool.query(query, [sid, hash, stu_name, age, gender, major], function(error, results, fields) {
+      if (error) {
+        console.error('An error occurred:', error);
+        res.status(500).send('An error occurred during registration.');
+        return;
+      }
+
+      // Redirect to the login page with the success parameter
+      res.redirect('/login?success=true');
+    });
+  });
 });
 
-
+// Login endpoint (serving the login.html file)
+app.get('/login', function(req, res) {
+  res.sendFile(__dirname + '/client/src/login/login.html'); // Update the path as needed
+});

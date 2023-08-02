@@ -1,100 +1,110 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-qidth, intital scale=1.0">
+    <meta name="viewport" content="width=device-qidth, intital scale=1.0" />
     <title>Athena 0.5 Login</title>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body{
-            min-height: 100vh;
-            display: flex;
-            font-family: Impact, fantasy;
-        }
-        .container{
-            margin: auto;
-            max-width: 85%;
-        }
-        label,
-        input {
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        font-family: Impact, fantasy;
+      }
+      .container {
+        margin: auto;
+        max-width: 85%;
+      }
+      label,
+      input {
         display: inline-flex;
-        }
-        label {
+      }
+      label {
         width: 30%;
         text-align: right;
-        }
-        input+input {
+      }
+      input + input {
         float: right;
-        }
-        .container form{
-            width: 100%;
-            height: 100%;
-            padding: 25px;
-            background: darkgreen;
-            border-radius: 4px;
-            box-shadow: 0 8px 16px rgba(0,0,0,.3);
-        }
-        .container form .btn{
-            margin-top: 5%;
-            margin-left: 50%;
-            transform: translateX(-50%);
-        }
-        .container form h1{
-            text-align: center;
-            padding: 5px;
-        
-        }
-        .container form p{
-            text-align: center;
-            padding:  10px;
-        }
-        .container form .btn1{
-            margin-left: 50%;
-            transform: translateX(-50%);
-        }
-
-
+      }
+      .container form {
+        width: 100%;
+        height: 100%;
+        padding: 25px;
+        background: darkgreen;
+        border-radius: 4px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      }
+      .container form .btn {
+        margin-top: 5%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
+      .container form h1 {
+        text-align: center;
+        padding: 5px;
+      }
+      .container form p {
+        text-align: center;
+        padding: 10px;
+      }
+      .container form .btn1 {
+        margin-left: 50%;
+        transform: translateX(-50%);
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <form action="">
-            <h1>Athena 0.5</h1>
-            <div class="form-group">
-                <label for="">Username</label>
-                <input type="text" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" class="form-control" required>
-            </div>
-            <input type="submit" class="btn" value="Login">
-            <p>Don't have an Account?</p>
-            <input type="submit" class="btn1" value="Create an Account" onClick="registerCng()">
-            <script>
-                function registerCng() {
-                  window.location.href="./register.html";
-                }
-            </script>
-        </form>
+      <form action="">
+        <h1>Athena 0.5</h1>
+        <div class="form-group">
+          <label for="">Username</label>
+          <input type="text" class="form-control" required />
+        </div>
+        <div class="form-group">
+          <label for="">Password</label>
+          <input type="password" class="form-control" required />
+        </div>
+        <input type="submit" class="btn" value="Login" />
+        <p>Don't have an Account?</p>
+        <input
+          type="submit"
+          class="btn1"
+          value="Create an Account"
+          onClick="registerCng()"
+        />
         <script>
-            const loginForm = document.querySelector("form");
-
-            loginForm.addEventListener("submit", (e) => {
-                e.preventDefault();
-                const lform = new FormData(loginForm);
-                const loginObj = Object.fromEntries(lform);
-                const loginjson = JSON.stringify(loginObj);
-                localStorage.setItem("loginform", loginjson);
-                const updatejson = localStorage.getItem("registerform");
-                const updateobj = JSON.parse(updatejson);
-                update.updateStu(updateobj);
-            })
+          function registerCng() {
+            window.location.href = "./register.html";
+          }
         </script>
+      </form>
+      <script>
+        window.onload = function () {
+          var urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.has("success") && urlParams.get("success") === "true") {
+            alert("Your Profile Created!");
+          }
+        };
+      </script>
+      <script>
+        const loginForm = document.querySelector("form");
+
+        loginForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const lform = new FormData(loginForm);
+          const loginObj = Object.fromEntries(lform);
+          const loginjson = JSON.stringify(loginObj);
+          localStorage.setItem("loginform", loginjson);
+          const updatejson = localStorage.getItem("registerform");
+          const updateobj = JSON.parse(updatejson);
+          update.updateStu(updateobj);
+        });
+      </script>
     </div>
-</body>
+  </body>
 </html>
