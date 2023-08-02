@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+    <link rel="stylesheet" href="edit.css" />
+    <style>
+      table {
+        border-collapse: collapse;
+        margin: auto;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 15px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <!-- Add your organization image here -->
+        <img src="./logo.jpg" alt="Organization Logo" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="./admin.html">Admin Section</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="courses">
+        <h2>Courses to Add</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th>Course Name</th>
+              <th>Course Hours</th>
+              <th>Course ID</th>
+              <th>Professor Name</th>
+              <th>Add Course</th>
+            </tr>
+            <tr>
+              <td><input type="text" id="courseName" name="courseName" /></td>
+              <td>
+                <input type="number" id="courseHours" name="courseHours" />
+              </td>
+              <td><input type="text" id="courseId" name="courseId" /></td>
+              <td>
+                <select id="professorName" name="professorName">
+                  <!-- Server-side code to populate options goes here -->
+                  <option>Karen Aguar</option>
+                  <option>mariana Andrade</option>
+                  <option>Robert Bostrom</option>
+                  <option>Stacy Boyles</option>
+                  <option>Dave Chatterjee</option>
+                  <option>Timothy Chester</option>
+                  <option>Dave Crouch</option>
+                  <option>Becky Curry</option>
+                  <option>Erica Dobbs</option>
+                  <option>Chris Gerlach</option>
+                  <option>Dale Goodhue</option>
+                  <option>Natassja Hatcher</option>
+                </select>
+              </td>
+              <td><button type="button" id="addCourse">Add</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "termproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd convertdata && node setup.js && node table.js && node database.js cd .. && npx nodemon athenaserver.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "create-react-app": "^5.0.1",
+    "express": "^4.18.2",
+    "fast-csv": "^4.3.6",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.5.2",
+    "react-dom": "^18.2.0",
+    "sequelize": "^6.32.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

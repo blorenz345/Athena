@@ -1,0 +1,14 @@
+GET http://localhost:3006/edits
+
+###
+
+POST http://localhost:3006/dbmodel/newEdits
+Content-Type: application/json
+
+{
+    "Username": "blorenz",
+    "Password": "1234",
+    "Name": "brenden",
+    "Age": 23,
+    "Major": "CS"
+}

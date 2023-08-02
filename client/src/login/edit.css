@@ -1,0 +1,68 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #fff; /* Set the header background to white */
+  padding: 10px;
+}
+
+.logo {
+  text-align: center; /* Center the organization logo */
+  margin-bottom: 20px; /* Add space below the organization logo */
+}
+
+.logo img {
+  max-width: 200px; /* Set the maximum width for the logo */
+  display: block; /* Remove any default spacing */
+  margin: 0 auto; /* Center the logo horizontally */
+  border-radius: 560%; /* Apply a border radius of 560% (oval shape) */
+}
+
+nav {
+  background-color: darkgreen; /* Set the navigation bar background to dark green */
+  border-top: 1px solid #fff; /* Add a border line above the navigation bar */
+  border-bottom: 1px solid #fff; /* Add a border line below the navigation bar */
+  padding: 15px 0; /* Adjust the top and bottom padding to make it bulky */
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  padding: 12px 20px; /* Adjust the top and bottom padding to match the navigation bar height */
+  border: 1px solid #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease; /* Add smooth transition effect on hover */
+}
+
+nav a:hover {
+  background-color: #fff; /* Change the background color on hover */
+  color: #333; /* Change the font color on hover */
+}
+
+main {
+  padding: 20px;
+}
+
+
+.profile-info {
+  text-align: center; /* Center the content inside the profile section */
+}
+
+.profile-info p {
+  margin: 5px 0;
+}

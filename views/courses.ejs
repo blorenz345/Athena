@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Courses</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Course Name</th>
+        <th>Course ID</th>
+        <th>Course Hours</th>
+        <th>Professor ID</th>
+      </tr>
+      <% courses.forEach((course) => { %>
+      <tr>
+        <td><%= course.course_Name %></td>
+        <td><%= course.course_ID %></td>
+        <td><%= course.course_Hours %></td>
+        <td><%= course.professor_ID %></td>
+        <td><button type="button">Add</button></td>
+      </tr>
+      <% }); %>
+    </table>
+  </body>
+</html>
